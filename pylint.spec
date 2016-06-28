@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 1.4.5
-Release  : 24
+Release  : 25
 URL      : https://pypi.python.org/packages/source/p/pylint/pylint-1.4.5.tar.gz
 Source0  : https://pypi.python.org/packages/source/p/pylint/pylint-1.4.5.tar.gz
 Summary  : python code static checker
