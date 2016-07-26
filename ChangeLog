@@ -2,6 +2,43 @@
 Pylint NEWS
 -----------
 
+What's new in Pylint 1.6.4?
+===========================
+
+Release date: 2016-07-19
+
+    * Recurse into all the ancestors when checking if an object is an exception
+
+      Since we were going only into the first level, we weren't inferring
+      when a class used a metaclass which defined a base Exception class
+      for the aforementioned class.
+
+
+What's new in Pylint 1.6.3?
+===========================
+
+Release date: 2016-07-18
+
+    * Do not crash when inferring uninferable exception types for docparams extension
+
+      Close #998
+
+What's new in Pylint 1.6.2?
+===========================
+
+Release date: 2016-07-15
+
+    * Do not crash when printing the help of options with default regular expressions
+
+      Close #990
+
+    * More granular versions for deprecated modules.
+
+      Close #991
+
+    * Do not crash in docparams when we can't infer the exception types.
+
+
 What's new in Pylint 1.6.1?
 ===========================
 
