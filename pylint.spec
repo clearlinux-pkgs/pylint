@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 1.6.4
-Release  : 28
+Release  : 29
 URL      : http://pypi.debian.net/pylint/pylint-1.6.4.tar.gz
 Source0  : http://pypi.debian.net/pylint/pylint-1.6.4.tar.gz
 Summary  : python code static checker
