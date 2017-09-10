@@ -4,13 +4,14 @@
 #
 Name     : pylint
 Version  : 1.7.2
-Release  : 34
+Release  : 35
 URL      : https://pypi.debian.net/pylint/pylint-1.7.2.tar.gz
 Source0  : https://pypi.debian.net/pylint/pylint-1.7.2.tar.gz
 Summary  : python code static checker
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: pylint-bin
+Requires: pylint-legacypython
 Requires: pylint-python
 Requires: astroid
 Requires: colorama
@@ -22,7 +23,7 @@ BuildRequires : isort
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pytest
-BuildRequires : pytest-runner-python
+BuildRequires : pytest-runner
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
@@ -40,9 +41,18 @@ Group: Binaries
 bin components for the pylint package.
 
 
+%package legacypython
+Summary: legacypython components for the pylint package.
+Group: Default
+
+%description legacypython
+legacypython components for the pylint package.
+
+
 %package python
 Summary: python components for the pylint package.
 Group: Default
+Requires: pylint-legacypython
 
 %description python
 python components for the pylint package.
@@ -56,12 +66,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1498482237
+export SOURCE_DATE_EPOCH=1505057408
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1498482237
+export SOURCE_DATE_EPOCH=1505057408
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -79,7 +89,10 @@ echo ----[ mark ]----
 /usr/bin/pyreverse
 /usr/bin/symilar
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
