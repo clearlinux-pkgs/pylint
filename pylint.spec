@@ -4,13 +4,14 @@
 #
 Name     : pylint
 Version  : 1.7.4
-Release  : 37
+Release  : 38
 URL      : https://pypi.debian.net/pylint/pylint-1.7.4.tar.gz
 Source0  : https://pypi.debian.net/pylint/pylint-1.7.4.tar.gz
 Summary  : python code static checker
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: pylint-bin
+Requires: pylint-python3
 Requires: pylint-python
 Requires: astroid
 Requires: colorama
@@ -43,9 +44,19 @@ bin components for the pylint package.
 %package python
 Summary: python components for the pylint package.
 Group: Default
+Requires: pylint-python3
 
 %description python
 python components for the pylint package.
+
+
+%package python3
+Summary: python3 components for the pylint package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the pylint package.
 
 
 %prep
@@ -56,7 +67,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506766741
+export SOURCE_DATE_EPOCH=1507169346
 python3 setup.py build -b py3
 
 %install
@@ -77,5 +88,8 @@ echo ----[ mark ]----
 /usr/bin/symilar
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
