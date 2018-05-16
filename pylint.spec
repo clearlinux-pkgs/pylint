@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 1.8.2
-Release  : 44
+Release  : 45
 URL      : https://pypi.debian.net/pylint/pylint-1.8.2.tar.gz
 Source0  : https://pypi.debian.net/pylint/pylint-1.8.2.tar.gz
 Summary  : python code static checker
