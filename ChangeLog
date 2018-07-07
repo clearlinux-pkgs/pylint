@@ -2,10 +2,141 @@
 Pylint's ChangeLog
 ------------------
 
+What's New in Pylint 1.9.2?
+===========================
+
+
+Release date: 2018-06-06
+
+    * Fix `KeyError` raised when using docparams and NotImplementedError is documented.
+
+    * Don't include excepthandlers that don't have a name when looking for exception-escape
+
+    * Rewrite the comprehension-escape and exception-escape to work only on the corresponding nodes
+
+    These two checks were implemented in terms of visit_namne, that is, for every name in the tree,
+    we looked to see if that name leaked. This was resulting in a couple of false positives
+    and also in a performance issue, since we were calling nodes_of_class() and scope() for each
+    name node. Instead, this approach uses the visit methods for exception and comprehension nodes
+    and looks to see from there if the current scope uses leaked names.
+    This is not the ideal situation as well, ideal would be to have access to the definition
+    frame of each name, but that requires some extra engineering effort in astroid to get it right.
+    Close #2106
+
+    * builtins is allowed to redefine builtins. Close #1966
+
+
+What's New in Pylint 1.9.1?
+===========================
+
+
+Release date: 2018-05-14
+
+    * Fixed old-raise-syntax always erroring in Python 3.
+
+
+What's New in Pylint 1.9.0?
+===========================
+
+
+Release date: 2018-05-15
+
+    * Added two new Python 3 porting checks, `exception-escape` and `comprehension-escape`
+
+      These two are emitted whenever pylint detects that a variable defined in the
+      said blocks is used outside of the given block. On Python 3 these values are deleted.
+
+    * Added a new `deprecated-sys-function`, emitted when accessing removed sys members.
+
+    * Added `xreadlines-attribute`, emitted when the `xreadlines()` attribute is accessed.
+
+    * The Python 3 porting mode can now run with Python 3 as well.
+
+    * docparams extension allows abstract methods to document what overriding
+      implementations should return, and to raise NotImplementedError without
+      documenting it.
+
+      Closes #2044
+
+    * Special methods do not count towards `too-few-methods`,
+      and are considered part of the public API.
+
+    * Enum classes do not trigger `too-few-methods`
+
+      Close #605
+
+    * defaultdict and subclasses of dict are now handled for dict-iter-* checks
+
+      Close #2005
+
+   * Added a new Python 2/3 check for accessing `operator.div`, which is removed in Python 3
+
+     Close #1936
+
+   * Added a new Python 2/3 check for accessing removed urllib functions
+
+     Close #1997
+
+   * Added a new check for catching unicode raw string literals
+
+     Close #1938
+
+
+What's New in Pylint 1.8.4?
+===========================
+
+Release date: 2018-04-05
+
+
+    * Stop early when we already detected a disable for a line too long
+
+    Close #1974
+
+    * Add missing string functions to the Python 3 porting checker
+
+    * Require no-context-manager to infer paths before walking the tree
+
+    Fixes #1874
+
+
+What's New in Pylint 1.8.3?
+==========================
+
+Release date: 2018-03-16
+
+    * Fix false positive ``inconsistent-return-statements`` message when a
+      function is defined under an if statement.
+
+      Close #1794
+
+     * Exempt `__doc__` from triggering a `redefined-builtin`
+
+      `__doc__` can be used to specify a docstring for a module without
+      passing it as a first-statement string.
+
+    * Don't crash on invalid strings when checking for `logging-format-interpolation`
+
+      Close #1944
+
+    * Fix false positive ``inconsistent-return-statements`` message by
+      avoiding useless exception inference if the exception is not handled.
+
+      Close #1794 (second part)
+
+    * Fix false positive undefined-variable for lambda argument in
+        class definitions
+
+      Close #1824
+
+    * Fix false-positive ``undefined-variable`` for generated
+      comprehension variables in function default arguments
+
+      Close #1897
+
 What's New in Pylint 1.8.2?
 ==========================
 
-Release data: 2018-01-23
+Release date: 2018-01-23
 
     * Fixed a crash which occurred when `Uninferable` wasn't properly handled in `stop-iteration-return`
 
