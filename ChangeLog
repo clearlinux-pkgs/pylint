@@ -2,20 +2,94 @@
 Pylint's ChangeLog
 ------------------
 
-What's New in Pylint 2.0.1?
+What's New in Pylint 2.1?
 =========================
 
-Release date: 2018-07-23
+Release date: 2018-08-01
+
+   * `trailing-comma-tuple` gets emitted for ``yield`` statements as well.
+
+      Close #2363
+
+   * Get only the arguments of the scope function for `redefined-argument-from-local`
+
+     Close #2364
+
+   * Add a check `misplaced-format-function` which is emitted if format function is used on
+     non str object.
+
+     Close #2200
+
+   * `chain.from_iterable` no longer emits `dict-{}-not-iterating` when dealing with dict values and keys
+
+   * Demote the `try-except-raise` message from an error to a warning (E0705 -> W0706)
+
+      Close #2323
+
+   * Correctly handle the new name of the Python implementation of the `abc` module.
+
+     Close PyCQA/astroid#2288
+
+    * Modules with `__getattr__` are exempted by default from `no-member`
+
+      There's no easy way to figure out if a module has a particular member when
+      the said module uses `__getattr__`, which is a new addition to Python 3.7.
+      Instead we assume the safe thing to do, in the same way we do for classes,
+      and skip those modules from checking.
+
+      Close #2331
+
+    * Fix a false positive `invalid name` message when method or attribute name is longer then 30 characters.
+
+      Close #2047
+
+    * Include the type of the next branch in `no-else-return`
+
+      Close #2295
+
+    * Fix inconsistent behaviour for bad-continuation on first line of file
+
+      Close #2281
+
+     * Fix not being able to disable certain messages on the last line through
+       the global disable option
+
+       Close #2278
+
+    * Don't emit `useless-return` when we have a single statement that is the return itself
+
+      We still want to be explicit when a function is supposed to return
+      an optional value; even though `pass` could still work, it's not explicit
+      enough and the function might look like it's missing an implementation.
+      Close #2300
+
+   * Fix false-positive undefined-variable for self referential class name in lamdbas
+
+      Close #704
 
     * Don't crash when `pylint` is unable to infer the value of an argument to `next()`
 
       Close #2316
+
+    * Don't emit `not-an-iterable` when dealing with async iterators.
+
+      But do emit it when using the usual iteration protocol against
+      async iterators.
+
+      Close #2311
+
+   * Can specify a default docstring type for when the check cannot guess the type
+
+      Close #1169
 
 
 What's New in Pylint 2.0?
 =========================
 
 Release date: 2018-07-15
+    * `try-except-raise` should not be emitted if there are any parent exception class handlers.
+
+       Close #2284
 
     * `trailing-comma-tuple` can be emitted for `return` statements as well.
 
@@ -93,7 +167,7 @@ Release date: 2018-07-15
 
        Close #1984
 
-    * Make `len-as-condition` test more cases, such as `len() < 1` or `len <= 0'
+    * Make ``len-as-condition`` test more cases, such as ``len() < 1`` or ``len <= 0``
 
     * Fix false-positive ``line-too-long`` message emission for
       commented line at the end of a module
@@ -389,7 +463,7 @@ Release date: 2018-07-15
       Close #760
 
     * Fix false-positive ``bad-whitespace`` message for typing annoatations
-    with ellipses in them
+      with ellipses in them
 
       Close 1992
 
@@ -432,7 +506,7 @@ Release date: 2018-05-15
 
 
 What's New in Pylint 1.8.1?
-=========================
+===========================
 
 Release date: 2017-12-15
 
@@ -483,7 +557,7 @@ Release date: 2017-12-15
 
       This is emitted for function definitions
       in which keyword arguments are placed before variable
-      positional arguments (*args).
+      positional arguments (\*args).
 
       This may lead to args list getting modified if keyword argument's value
       is not provided in the function call assuming it will take default value
@@ -593,7 +667,7 @@ Release date: 2017-12-15
       Close #1409
 
      * Fix ``missing-docstring`` false negatives when modules, classes, or methods
-     consist of compound statements that exceed the ``docstring-min-length``
+       consist of compound statements that exceed the ``docstring-min-length``
 
     * Fix ``useless-else-on-loop`` false positives when break statements are
       deeply nested inside loop.
@@ -624,7 +698,7 @@ Release date: 2017-12-15
       Close #1742
 
 What's New in Pylint 1.7.1?
-=========================
+===========================
 
 Release date: 2017-04-17
 
@@ -774,7 +848,7 @@ Release date: 2017-04-13
     * Fix a false positive for keyword variadics with regard to keyword only arguments.
 
       If a keyword only argument was necessary for a function, but that function was called
-      with keyword variadics (**kwargs), then we were emitting a missing-kwoa false positive,
+      with keyword variadics (\**kwargs), then we were emitting a missing-kwoa false positive,
       which is now fixed.
 
       Close #934.
