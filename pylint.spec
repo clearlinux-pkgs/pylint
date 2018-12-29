@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 2.2.2
-Release  : 63
+Release  : 64
 URL      : https://files.pythonhosted.org/packages/92/8e/e86eb8dbc10ee845b1c04ed9eaeafb981331f6db5dc05ba21555fcbe7595/pylint-2.2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/92/8e/e86eb8dbc10ee845b1c04ed9eaeafb981331f6db5dc05ba21555fcbe7595/pylint-2.2.2.tar.gz
 Summary  : python code static checker
