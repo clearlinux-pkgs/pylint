@@ -1,5 +1,5 @@
 # This file contains recursive sources that require this package
-Pygments
 pcs
+python-language-server
 spyder-ide
 totem
