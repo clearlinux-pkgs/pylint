@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 2.5.3
-Release  : 80
+Release  : 81
 URL      : https://files.pythonhosted.org/packages/3b/f0/ee19aeccaea881c38d129f015b2be7658724fcefa3a506d7c44747d764d9/pylint-2.5.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/3b/f0/ee19aeccaea881c38d129f015b2be7658724fcefa3a506d7c44747d764d9/pylint-2.5.3.tar.gz
 Summary  : python code static checker
@@ -80,7 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591628281
+export SOURCE_DATE_EPOCH=1591634497
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
