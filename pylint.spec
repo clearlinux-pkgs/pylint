@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 2.8.3
-Release  : 100
+Release  : 101
 URL      : https://files.pythonhosted.org/packages/18/a7/2bf9363ec428818abd27a64ec44c84b13bf1c10df01c402f08391aa1d07c/pylint-2.8.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/18/a7/2bf9363ec428818abd27a64ec44c84b13bf1c10df01c402f08391aa1d07c/pylint-2.8.3.tar.gz
 Summary  : python code static checker
@@ -26,6 +26,7 @@ BuildRequires : isort
 BuildRequires : mccabe
 BuildRequires : setuptools_scm-python
 BuildRequires : toml
+Patch1: deps.patch
 
 %description
 =============================================
@@ -75,13 +76,14 @@ python3 components for the pylint package.
 %prep
 %setup -q -n pylint-2.8.3
 cd %{_builddir}/pylint-2.8.3
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1622561105
+export SOURCE_DATE_EPOCH=1622566724
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
