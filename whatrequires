@@ -2,6 +2,7 @@
 knack
 pcs
 python-language-server
+python-lsp-server
 pyudev
 spyder-ide
 totem
