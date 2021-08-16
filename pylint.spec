@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 2.9.6
-Release  : 108
+Release  : 109
 URL      : https://files.pythonhosted.org/packages/47/18/d148ae88f254cbb9a8763beae34027bc603dc6f57b29c48f7cb3f2e28cde/pylint-2.9.6.tar.gz
 Source0  : https://files.pythonhosted.org/packages/47/18/d148ae88f254cbb9a8763beae34027bc603dc6f57b29c48f7cb3f2e28cde/pylint-2.9.6.tar.gz
 Summary  : python code static checker
@@ -25,6 +25,7 @@ BuildRequires : colorama
 BuildRequires : isort
 BuildRequires : mccabe
 BuildRequires : toml
+Patch1: deps.patch
 
 %description
 No detailed description available
@@ -72,13 +73,14 @@ python3 components for the pylint package.
 %prep
 %setup -q -n pylint-2.9.6
 cd %{_builddir}/pylint-2.9.6
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1627509046
+export SOURCE_DATE_EPOCH=1629129712
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
