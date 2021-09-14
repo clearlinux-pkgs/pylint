@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 2.10.2
-Release  : 111
+Release  : 112
 URL      : https://files.pythonhosted.org/packages/5f/82/b14e9226d11b606ec56af631beef422c4dfddb7a03b8906e53124f4a7079/pylint-2.10.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5f/82/b14e9226d11b606ec56af631beef422c4dfddb7a03b8906e53124f4a7079/pylint-2.10.2.tar.gz
 Summary  : python code static checker
@@ -27,6 +27,7 @@ BuildRequires : isort
 BuildRequires : mccabe
 BuildRequires : platformdirs
 BuildRequires : toml
+Patch1: deps.patch
 
 %description
 No detailed description available
@@ -75,13 +76,14 @@ python3 components for the pylint package.
 %prep
 %setup -q -n pylint-2.10.2
 cd %{_builddir}/pylint-2.10.2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629738482
+export SOURCE_DATE_EPOCH=1631634524
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
