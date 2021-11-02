@@ -1,7 +1,9 @@
 # This file contains recursive sources that require this package
+ansible
 knack
 pcs
 python-language-server
 python-lsp-server
+python-pocketlint
 pyudev
-spyder-ide
+qt6base
