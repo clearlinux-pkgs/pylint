@@ -1,0 +1,6 @@
+2.11.1
+pypi(astroid)
+pypi(isort)
+pypi(mccabe)
+pypi(platformdirs)
+pypi(toml)

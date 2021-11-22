@@ -4,7 +4,7 @@
 #
 Name     : pylint
 Version  : 2.11.1
-Release  : 114
+Release  : 115
 URL      : https://files.pythonhosted.org/packages/61/c0/752d9f4c506457f2f6969c3ea0e2d62809ac34d16e8d00502894f164bded/pylint-2.11.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/61/c0/752d9f4c506457f2f6969c3ea0e2d62809ac34d16e8d00502894f164bded/pylint-2.11.1.tar.gz
 Summary  : python code static checker
@@ -14,19 +14,12 @@ Requires: pylint-bin = %{version}-%{release}
 Requires: pylint-license = %{version}-%{release}
 Requires: pylint-python = %{version}-%{release}
 Requires: pylint-python3 = %{version}-%{release}
-Requires: astroid
-Requires: colorama
-Requires: isort
-Requires: mccabe
-Requires: platformdirs
-Requires: toml
-BuildRequires : astroid
 BuildRequires : buildreq-distutils3
-BuildRequires : colorama
-BuildRequires : isort
-BuildRequires : mccabe
-BuildRequires : platformdirs
-BuildRequires : toml
+BuildRequires : pypi(astroid)
+BuildRequires : pypi(isort)
+BuildRequires : pypi(mccabe)
+BuildRequires : pypi(platformdirs)
+BuildRequires : pypi(toml)
 
 %description
 No detailed description available
@@ -67,7 +60,6 @@ Requires: pypi(isort)
 Requires: pypi(mccabe)
 Requires: pypi(platformdirs)
 Requires: pypi(toml)
-Requires: pypi(typing_extensions)
 
 %description python3
 python3 components for the pylint package.
@@ -82,13 +74,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635876460
+export SOURCE_DATE_EPOCH=1637600335
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
+pypi-dep-fix.py . astroid
 python3 setup.py build
 
 %install
@@ -97,6 +90,7 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pylint
 cp %{_builddir}/pylint-2.11.1/LICENSE %{buildroot}/usr/share/package-licenses/pylint/909b58c9b803acb8d063ac6b2147e56afc8055f6
 python3 -tt setup.py build  install --root=%{buildroot}
+pypi-dep-fix.py %{buildroot} astroid
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
