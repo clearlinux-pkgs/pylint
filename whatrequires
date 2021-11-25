@@ -3,7 +3,6 @@ ansible
 knack
 pcs
 python-language-server
-python-lsp-server
 python-pocketlint
 pyudev
 qt6base
