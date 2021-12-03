@@ -1,5 +1,5 @@
 PKG_NAME := pylint
-URL = https://files.pythonhosted.org/packages/cc/67/c9cfda196db31390f0fb29f996f1393fd38217a531e1f3e057d86659b12c/pylint-2.12.1.tar.gz
+URL = https://files.pythonhosted.org/packages/9d/6b/732db4470fb03760af3aada21189c95676c0ec514c3b044b42929e018224/pylint-2.12.2.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
